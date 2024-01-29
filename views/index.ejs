@@ -1,7 +1,20 @@
 <%- include('partials/header.ejs') %>
 <h1>Blog Posts</h1>
 
-<div class="container d-flex flex-row mb-3 justify-content-around my-2 flex-wrap">
+<form>
+  <div class="mb-3">
+    <label for="blogTitle" class="form-label">Blog Title</label>
+    <input type="text" class="form-control" id="blogTitle">
+  </div>
+  <div class="mb-3">
+    <label for="blogContent" class="form-label">Blog Content</label>
+    <textarea name="blogContent" class="form-control" id="blogContent" cols="30" rows="10"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Post</button>
+</form>
+
+<!-- Post Cards -->
+<!-- <div class="container d-flex flex-row justify-content-around flex-wrap">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
@@ -29,5 +42,5 @@
       <a href="#" class="card-link">Another link</a>
     </div>
   </div>
-</div>
+</div> -->
 <%- include('partials/footer.ejs') %>
