@@ -1,3 +1,17 @@
 <%- include('partials/header.ejs') %>
-<h1>Create Post Page</h1>
+
+<h1>Create Post</h1>
+
+<form method="post" action="/create-post">
+  <div class="mb-3">
+    <label for="blogTitle" class="form-label">Blog Title</label>
+    <input type="text" name="blogTitle" class="form-control" id="blogTitle" required>
+  </div>
+  <div class="mb-3">
+    <label for="blogContent" class="form-label">Blog Content</label>
+    <textarea name="blogContent" class="form-control" id="blogContent" cols="30" rows="10" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Post</button>
+</form>
+
 <%- include('partials/footer.ejs') %>

@@ -1,3 +1,16 @@
 <%- include('partials/header.ejs') %>
 <h1>Edit Post Page</h1>
+
+<form method="post" action="/edit-post/<%= locals.post.postNum %>">
+  <div class="mb-3">
+    <label for="blogTitle" class="form-label">Blog Title</label>
+    <input type="text" name="blogTitle" class="form-control" id="blogTitle" required value="<%= locals.post.blogTitle %>">
+  </div>
+  <div class="mb-3">
+    <label for="blogContent" class="form-label">Blog Content</label>
+    <textarea name="blogContent" class="form-control" id="blogContent" cols="30" rows="10" required><%= locals.post.blogContent %></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Update Post</button>
+</form>
+
 <%- include('partials/footer.ejs') %>

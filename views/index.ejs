@@ -1,46 +1,31 @@
 <%- include('partials/header.ejs') %>
 <h1>Blog Posts</h1>
 
-<form>
-  <div class="mb-3">
-    <label for="blogTitle" class="form-label">Blog Title</label>
-    <input type="text" class="form-control" id="blogTitle">
-  </div>
-  <div class="mb-3">
-    <label for="blogContent" class="form-label">Blog Content</label>
-    <textarea name="blogContent" class="form-control" id="blogContent" cols="30" rows="10"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Add Post</button>
-</form>
-
-<!-- Post Cards -->
-<!-- <div class="container d-flex flex-row justify-content-around flex-wrap">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+<!-- <% console.log(locals.posts) %> -->
+<% if (locals.posts.length > 0) { %>
+  <div class="container d-flex flex-row justify-content-around flex-wrap"></div>
+  <% locals.posts.forEach(post => { %>
+    <% let index = locals.posts.indexOf(post) %>
+    <% console.log(post) %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= post.blogTitle %></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <p class="card-text"><%= post.blogContent %></p>
+        <!-- <a href=`/edit-post/$` class="card-link">Edit Post</a> -->
+        <form action="/edit-post/<%= post.postNum %>" method="get">
+          <button type="submit" class="btn btn-primary">Edit Post</button>
+        </form>
+        <form action="/remove-post/<%= index %>" method="get">
+          <button type="submit" class="btn btn-primary">Delete Post</button>
+        </form>
+        <!-- <a href="#" class="card-link">Another link</a> -->
+      </div>
     </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-</div> -->
+  <% }) %>
+  <div class="container d-flex flex-row justify-content-around flex-wrap"></div>
+<% } else { %>
+  <h2>No posts</h2>
+<% } %>
+ 
 <%- include('partials/footer.ejs') %>
