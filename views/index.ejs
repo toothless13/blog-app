@@ -1,25 +1,21 @@
 <%- include('partials/header.ejs') %>
-<h1>Blog Posts</h1>
+<h1 class="mx-auto text-center">Blog Posts</h1>
 
-<!-- <% console.log(locals.posts) %> -->
 <% if (locals.posts.length > 0) { %>
-  <div class="container d-flex flex-row justify-content-around flex-wrap"></div>
+  <div class="container d-flex flex-row justify-content-around flex-wrap mx-auto card-group"></div>
   <% locals.posts.forEach(post => { %>
     <% let index = locals.posts.indexOf(post) %>
     <% console.log(post.postNum) %>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= post.blogTitle %></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
         <p class="card-text"><%= post.blogContent %></p>
-        <!-- <a href=`/edit-post/$` class="card-link">Edit Post</a> -->
         <form action="/edit-post/<%= post.postNum %>" method="get">
           <button type="submit" class="btn btn-primary">Edit Post</button>
         </form>
         <form action="/remove-post/<%= index %>" method="get">
           <button type="submit" class="btn btn-primary">Delete Post</button>
         </form>
-        <!-- <a href="#" class="card-link">Another link</a> -->
       </div>
     </div>
   <% }) %>

@@ -52,8 +52,8 @@ app.get("/edit-post", (req, res) => {
 });
 
 app.post("/edit-post/:postId", (req, res) => {
-  console.log(req.params);
-  console.log(posts);
+  // console.log(req.params);
+  // console.log(posts);
 
   const postId = req.params.postId;
   // console.log(postId);
