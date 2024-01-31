@@ -1,4 +1,5 @@
 import express from "express";
+import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 const port = 3000;
@@ -18,7 +19,7 @@ app.get("/create-post", (req, res) => {
 
 app.post("/create-post", (req, res) => {
   if (req.body.blogTitle && req.body.blogContent) {
-    req.body.postNum = posts.length;
+    req.body.postNum = uuidv4();
     posts.push(req.body);
   } else {
     console.log("No Content");
@@ -29,8 +30,8 @@ app.post("/create-post", (req, res) => {
 app.get("/edit-post/:postId", (req, res) => {
   // console.log(req.params);
   const postId = req.params.postId;
-  console.log(postId);
-  console.log(posts);
+  // console.log(postId);
+  // console.log(posts);
   const findPostIndex = post => {
     if (postId == post.postNum) {
       return true;
@@ -39,9 +40,9 @@ app.get("/edit-post/:postId", (req, res) => {
     }
   }
   const postIndex = posts.findIndex(findPostIndex);
-  console.log(`Post Index is ${postIndex}`);
+  // console.log(`Post Index is ${postIndex}`);
   // console.log(postId);
-  console.log(posts[postIndex]);
+  // console.log(posts[postIndex]);
   // console.log(posts);
   res.render("edit-post.ejs", { post: posts[postIndex] });
 });
@@ -51,9 +52,23 @@ app.get("/edit-post", (req, res) => {
 });
 
 app.post("/edit-post/:postId", (req, res) => {
-  // console.log(req.params);
-  posts[req.params.postId].blogTitle = req.body.blogTitle;
-  posts[req.params.postId].blogContent = req.body.blogContent;
+  console.log(req.params);
+  console.log(posts);
+
+  const postId = req.params.postId;
+  // console.log(postId);
+  // console.log(posts);
+  const findPostIndex = post => {
+    if (postId == post.postNum) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  const postIndex = posts.findIndex(findPostIndex);
+
+  posts[postIndex].blogTitle = req.body.blogTitle;
+  posts[postIndex].blogContent = req.body.blogContent;
   res.render("index.ejs", { posts: posts });
   // res.redirect("/");
 });
