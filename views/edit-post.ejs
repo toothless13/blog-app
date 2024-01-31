@@ -1,5 +1,6 @@
 <%- include('partials/header.ejs') %>
 <h1>Edit Post Page</h1>
+<% console.log(locals) %>
 
 <form method="post" action="/edit-post/<%= locals.post.postNum %>">
   <div class="mb-3">

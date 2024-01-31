@@ -6,7 +6,7 @@
   <div class="container d-flex flex-row justify-content-around flex-wrap"></div>
   <% locals.posts.forEach(post => { %>
     <% let index = locals.posts.indexOf(post) %>
-    <% console.log(post) %>
+    <% console.log(post.postNum) %>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= post.blogTitle %></h5>
