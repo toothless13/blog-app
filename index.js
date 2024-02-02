@@ -1,9 +1,8 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
-import serverless from "serverless-http";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 9000;
 
 const posts = [];
 
@@ -70,5 +69,3 @@ app.get("/remove-post/:postId", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-export const handler = serverless(app);
