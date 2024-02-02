@@ -1,29 +1,28 @@
 <%- include('partials/header.ejs') %>
-<h1 class="mx-auto text-center">Blog Posts</h1>
+<h1 class="mx-auto mt-2 mb-5 text-center">Blog Posts</h1>
 
 <!-- Flex -->
 <% if (locals.posts.length > 0) { %>
   <div class="container d-flex justify-content-center flex-wrap mx-auto text-start">
     <% locals.posts.forEach(post => { %>
     <% let index = locals.posts.indexOf(post) %>
-    <!-- <% console.log(post) %> -->
-    <div class="card m-2 w-25">
+    <div class="card m-2" style="min-width: 30%;">
       <div class="card-body">
         <h5 class="card-title"><%= post.blogTitle %></h5>
         <p class="card-text"><%= post.blogContent.slice(0, 50) %></p>
         <div class="d-flex flex-row justify-content-around">
-          <form action="/edit-post/<%= post.postNum %>" method="get">
-            <button type="submit" class="btn btn-primary">Edit Post</button>
+          <form action="/edit-post/<%= post.postNum %>" method="get" class="m-2">
+            <button type="submit" class="btn btn-dark">Edit Post</button>
           </form>
-          <form action="/remove-post/<%= index %>" method="get">
-            <button type="submit" class="btn btn-primary">Delete Post</button>
+          <form action="/remove-post/<%= index %>" method="get" class="m-2">
+            <button type="submit" class="btn btn-dark">Delete Post</button>
           </form>
         </div>
       </div>
     </div>
   <% }) %>
 <% } else { %>
-  <h2>No posts</h2>
+  <h2 class="text-center my-5">No posts</h2>
 <% } %>
 </div>
  

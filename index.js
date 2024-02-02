@@ -28,10 +28,7 @@ app.post("/create-post", (req, res) => {
 });
 
 app.get("/edit-post/:postId", (req, res) => {
-  // console.log(req.params);
   const postId = req.params.postId;
-  // console.log(postId);
-  // console.log(posts);
   const findPostIndex = post => {
     if (postId == post.postNum) {
       return true;
@@ -40,10 +37,6 @@ app.get("/edit-post/:postId", (req, res) => {
     }
   }
   const postIndex = posts.findIndex(findPostIndex);
-  // console.log(`Post Index is ${postIndex}`);
-  // console.log(postId);
-  // console.log(posts[postIndex]);
-  // console.log(posts);
   res.render("edit-post.ejs", { post: posts[postIndex] });
 });
 
@@ -52,12 +45,8 @@ app.get("/edit-post", (req, res) => {
 });
 
 app.post("/edit-post/:postId", (req, res) => {
-  // console.log(req.params);
-  // console.log(posts);
-
   const postId = req.params.postId;
-  // console.log(postId);
-  // console.log(posts);
+
   const findPostIndex = post => {
     if (postId == post.postNum) {
       return true;
@@ -70,7 +59,6 @@ app.post("/edit-post/:postId", (req, res) => {
   posts[postIndex].blogTitle = req.body.blogTitle;
   posts[postIndex].blogContent = req.body.blogContent;
   res.render("index.ejs", { posts: posts });
-  // res.redirect("/");
 });
 
 app.get("/remove-post/:postId", (req, res) => {

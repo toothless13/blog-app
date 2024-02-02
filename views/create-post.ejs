@@ -1,8 +1,8 @@
 <%- include('partials/header.ejs') %>
 
-<h1>Create Post</h1>
+<h1 class="ms-5 mt-2 mb-5">Create Post</h1>
 
-<form method="post" action="/create-post">
+<form method="post" action="/create-post" class="w-50 ms-5">
   <div class="mb-3">
     <label for="blogTitle" class="form-label">Blog Title</label>
     <input type="text" name="blogTitle" class="form-control" id="blogTitle" required>
@@ -11,7 +11,7 @@
     <label for="blogContent" class="form-label">Blog Content</label>
     <textarea name="blogContent" class="form-control" id="blogContent" cols="30" rows="10" required></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Add Post</button>
+  <button type="submit" class="btn btn-dark">Add Post</button>
 </form>
 
 <%- include('partials/footer.ejs') %>
