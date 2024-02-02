@@ -70,3 +70,5 @@ app.get("/remove-post/:postId", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+export const handler = serverless(app);
