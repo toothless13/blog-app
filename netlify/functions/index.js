@@ -1,5 +1,6 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
+import serverless from "serverless-http";
 
 const app = express();
 const port = 3000;
