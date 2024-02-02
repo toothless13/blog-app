@@ -1,6 +1,7 @@
 # Blog App
 
 ## Overview
+
 The aim of this project was to create a simple blog application, that would allow the user to create, edit, delete and view blog posts.
 
 ## Technology
